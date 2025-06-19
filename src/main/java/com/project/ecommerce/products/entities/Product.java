@@ -1,8 +1,10 @@
 package com.project.ecommerce.products.entities;
 
-import com.project.ecommerce.orders.entities.Order;
+import com.project.ecommerce.orders.entities.OrderItem;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -16,15 +18,9 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-
     private int availableQuantity;
     private double price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
-    private Order order;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<OrderItem> orderItems;
 }
