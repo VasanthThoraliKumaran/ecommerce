@@ -73,13 +73,13 @@ public class OrderController {
     }
 
     /**
-     * Cancels (deletes) an order by its ID.
+     * Cancels (soft deletes) an order by its ID.
      *
-     * @param id the ID of the order to cancel
+     * @param id the ID of the order to update order status as CANCELLED
      * @return HTTP 204 (No Content) if cancellation was successful
      */
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> cancel(@PathVariable Long id) {
+    @PatchMapping("/{id}")
+    public ResponseEntity<Void> cancelOrder(@PathVariable Long id) {
         orderService.cancelOrder(id);
         return ResponseEntity.noContent().build();
     }

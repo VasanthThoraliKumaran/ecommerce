@@ -125,7 +125,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void updatePendingOrders() {
-        // Scheduler will update all PENDING orders to PROCESSING status
+        // Scheduler will update all PENDING order status as PROCESSING status
         List<Order> pendingOrders = orderRepository.findByStatus(OrderStatus.PENDING);
         for (Order order : pendingOrders) {
             order.setStatus(OrderStatus.PROCESSING);

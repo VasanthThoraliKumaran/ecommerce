@@ -30,8 +30,4 @@ public class ApiError {
         this.timestamp = LocalDateTime.now();
         this.path = path;
     }
-
-    public ApiError(HttpStatus status, String message) {
-        this(status, message, null);
-    }
 }
