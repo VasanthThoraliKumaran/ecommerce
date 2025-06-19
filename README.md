@@ -1,10 +1,7 @@
 
 # 🛒 Order Processing System
 
-This is a **Spring Boot-based Order Processing System** designed to manage customer orders, products, and order statuses. It provides REST APIs for creating orders, updating order statuses, and retrieving order information.
-
-The system integrates with **MySQL 8** and runs smoothly in a **Dockerized environment** for easy deployment.
-
+### This is a **Spring Boot-based Order Processing System** designed to manage customer orders, products, and order statuses. It provides REST APIs for creating orders, updating order statuses, and retrieving order information.
 ---
 
 ## 🚀 Features
@@ -14,6 +11,7 @@ The system integrates with **MySQL 8** and runs smoothly in a **Dockerized envir
 ✅ Update and cancel orders  
 ✅ Filter orders by status  
 ✅ Global exception handling with structured error responses  
+✅ Thymeleaf UI template for api usage demo 
 ✅ Dockerized MySQL and Spring Boot app for easy setup
 
 ---
