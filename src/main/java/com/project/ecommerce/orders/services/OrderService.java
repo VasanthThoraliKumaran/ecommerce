@@ -19,5 +19,6 @@ public interface OrderService {
 
     void updatePendingOrders();
 
+    boolean hasPendingOrders();
 }
 

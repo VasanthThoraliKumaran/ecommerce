@@ -119,8 +119,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public boolean hasPendingOrders() {
+        return orderRepository.existsByStatus(OrderStatus.PENDING);
+    }
+
+    @Override
     public void updatePendingOrders() {
-        // Scheduler will update all PENDING orders to PROCESSING after 5 minutes
         List<Order> pendingOrders = orderRepository.findByStatus(OrderStatus.PENDING);
         for (Order order : pendingOrders) {
             order.setStatus(OrderStatus.PROCESSING);
