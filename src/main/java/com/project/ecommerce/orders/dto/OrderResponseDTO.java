@@ -12,4 +12,5 @@ public class OrderResponseDTO {
     private List<OrderItemResponseDTO> orderItems;
     private String status;
     private LocalDateTime createdAt;
+    private double billingAmount;
 }

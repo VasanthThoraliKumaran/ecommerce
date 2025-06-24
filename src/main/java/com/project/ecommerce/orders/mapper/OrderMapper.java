@@ -21,6 +21,7 @@ public interface OrderMapper {
     // Entity to Response DTO
     @Mapping(source = "customer.name", target = "customerName")
     @Mapping(source = "id", target = "orderId")
+    @Mapping(source = "billingAmount", target = "billingAmount")
     OrderResponseDTO toDto(Order order);
 
     List<OrderItemResponseDTO> toOrderItemResponseList(List<OrderItem> items);

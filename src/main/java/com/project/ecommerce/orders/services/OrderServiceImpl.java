@@ -3,6 +3,7 @@ package com.project.ecommerce.orders.services;
 import com.project.ecommerce.customers.entities.Customer;
 import com.project.ecommerce.customers.repository.CustomerRepository;
 import com.project.ecommerce.orders.constants.OrderStatus;
+import com.project.ecommerce.orders.dto.OrderItemRequestDTO;
 import com.project.ecommerce.orders.dto.OrderRequestDTO;
 import com.project.ecommerce.orders.dto.OrderResponseDTO;
 import com.project.ecommerce.orders.entities.Order;
@@ -69,6 +70,8 @@ public class OrderServiceImpl implements OrderService {
         }).collect(Collectors.toList());
 
         order.setOrderItems(items);
+        double billingAmount = items.stream().mapToDouble(OrderItem::getNet_price).sum();
+        order.setBillingAmount(billingAmount);
 
         // Save order and return DTO
         Order savedOrder = orderRepository.save(order);
@@ -81,6 +84,11 @@ public class OrderServiceImpl implements OrderService {
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Order not found with ID: " + id));
         return orderMapper.toDto(order);
+    }
+
+    @Override
+    public Order getOrderEntityById(Long id) {
+        return orderRepository.findById(id) .orElseThrow(() -> new ResourceNotFoundException("Order not found with ID: " + id));
     }
 
     @Override
