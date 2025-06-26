@@ -18,8 +18,8 @@ public class PaymentController {
     /**
      * Process a new payment for the order.
      *
-     * @param dto the order request payload containing customer and item details
-     * @return the created order response with HTTP 201 status
+     * @param dto the order request payload containing payment details
+     * @return boolean with HTTP 201 status
      */
     @PostMapping
     public ResponseEntity<Boolean> processPayment(@Valid @RequestBody PaymentRequestDTO dto) {
